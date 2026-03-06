@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>osu! Mania</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #111; color: #fff; }
+        .menu, .game-interface, .results, .chart-editor { display: none; }
+        .active { display: block; }
+        .menu { text-align: center; padding: 50px; }
+        button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="menu active">
+        <h1>Welcome to osu! Mania</h1>
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="openChartEditor()">Chart Editor</button>
+    </div>
+
+    <div class="game-interface">
+        <h2>osu! Mania Game Interface</h2>
+        <div id="game-area">
+            <!-- Game Area Visualization -->
+        </div>
+        <button onclick="showResults()">End Game</button>
+    </div>
+
+    <div class="results">
+        <h2>Results</h2>
+        <p>Your score: <span id="score">0</span></p>
+        <button onclick="backToMenu()">Back to Menu</button>
+    </div>
+
+    <div class="chart-editor">
+        <h2>Chart Editor</h2>
+        <textarea id="chart-data" rows="10" cols="30">Enter chart data here...</textarea><br />
+        <button onclick="saveChart()">Save Chart</button>
+        <button onclick="backToMenu()">Back to Menu</button>
+    </div>
+
+    <script>
+        function startGame() {
+            document.querySelector('.menu').classList.remove('active');
+            document.querySelector('.game-interface').classList.add('active');
+            // Initialize game logic here
+        }
+
+        function showResults() {
+            // Calculate score logic
+            document.getElementById('score').innerText = Math.floor(Math.random() * 100); // Random score for demo
+            document.querySelector('.game-interface').classList.remove('active');
+            document.querySelector('.results').classList.add('active');
+        }
+
+        function openChartEditor() {
+            document.querySelector('.menu').classList.remove('active');
+            document.querySelector('.chart-editor').classList.add('active');
+        }
+
+        function saveChart() {
+            // Save the chart data logic
+            alert('Chart saved!');
+        }
+
+        function backToMenu() {
+            const activeDiv = document.querySelector('.active');
+            activeDiv.classList.remove('active');
+            document.querySelector('.menu').classList.add('active');
+        }
+    </script>
+</body>
+</html>
